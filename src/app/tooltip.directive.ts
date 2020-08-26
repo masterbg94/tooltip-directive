@@ -37,7 +37,7 @@ export class TooltipDirective {
       this.renderer.removeChild(document.body, this.tooltip);
       // this.renderer.removeChild(this.el.nativeElement, this.tooltip);
       this.tooltip = null;
-    }, (this.delay / 2));
+    }, this.delay);
   }
 
   public create() {
@@ -52,15 +52,15 @@ export class TooltipDirective {
     // this.renderer.appendChild(this.el.nativeElement, this.tooltip);
 
     this.renderer.addClass(this.tooltip, 'ng-tooltip');
-    this.renderer.addClass(this.tooltip, `ng-tooltip-${this.placement}`);
+    // this.renderer.addClass(this.tooltip, `ng-tooltip-${this.placement}`);
 
     // delay
-    this.renderer.setStyle(this.tooltip, '-webkit-transition', `opacity ${this.delay}ms`);
+    /*this.renderer.setStyle(this.tooltip, '-webkit-transition', `opacity ${this.delay}ms`);
     this.renderer.setStyle(this.tooltip, '-moz-transition', `opacity ${this.delay}ms`);
     this.renderer.setStyle(this.tooltip, '-o-transition', `opacity ${this.delay}ms`);
     this.renderer.setStyle(this.tooltip, 'transition', `opacity ${this.delay}ms`);
     this.renderer.setStyle(this.tooltip, 'transition-delay', '0.5s');
-    this.renderer.setStyle(this.tooltip, 'width', 'fit-content');
+    this.renderer.setStyle(this.tooltip, 'width', 'fit-content');*/
   }
 
   public setPosition() {

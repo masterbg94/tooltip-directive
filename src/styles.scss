@@ -5,7 +5,7 @@
   padding: 0 50px;
 }
 
-.tooltip-example [tooltip] {
+/*.tooltip-example [tooltip] {
   display: inline-block;
   margin: 50px 20px;
   width: 180px;
@@ -14,19 +14,30 @@
   border-radius: 5px;
   line-height: 50px;
   text-align: center;
-}
+}*/
 
 .ng-tooltip {
   position: absolute;
-  max-width: 150px;
+  //max-width: 150px;
+  width: 50px;
   font-size: 14px;
   text-align: center;
   color: #f8f8f2;
-  padding: 3px 8px;
+  //padding: 3px 8px;
+  line-height: 20px;
   background: #282a36;
   border-radius: 0 15px 15px 15px;
   z-index: 1000;
   opacity: 0;
+  transition: 1s;
+  height: 10px;
+  white-space: nowrap;
+  &.ng-tooltip-show{
+    background: red;
+    width: 200px;
+    opacity: 1;
+    height: 24px;
+  }
 }
 
 /*.ng-tooltip:after {
@@ -35,13 +46,13 @@
   border-style: solid;
 }*/
 
-.ng-tooltip-top:after {
+/*.ng-tooltip-top:after {
   top: 100%;
   left: 50%;
   margin-left: -5px;
   border-width: 5px;
   border-color: black transparent transparent transparent;
-}
+}*/
 
 /*.ng-tooltip-bottom:after {
   bottom: 100%;
@@ -51,21 +62,21 @@
   border-color: transparent transparent black transparent;
 }*/
 
-.ng-tooltip-left:after {
+/*.ng-tooltip-left:after {
   top: 50%;
   left: 100%;
   margin-top: -5px;
   border-width: 5px;
   border-color: transparent transparent transparent black;
-}
+}*/
 
-.ng-tooltip-right:after {
+/*.ng-tooltip-right:after {
   top: 50%;
   right: 100%;
   margin-top: -5px;
   border-width: 5px;
   border-color: transparent black transparent transparent;
-}
+}*/
 
 .ng-tooltip-show {
   opacity: 1;
