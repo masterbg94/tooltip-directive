@@ -1,10 +1,10 @@
 import {Directive, ElementRef, HostListener, Input, Renderer2} from '@angular/core';
 
 @Directive({
-  selector: '[appTooltip]'
+  selector: '[appTaTooltip]'
 })
 export class TooltipDirective {
-  @Input('appTooltip') tooltipTitle: string;
+  @Input('appTaTooltip') tooltipTitle: string;
   @Input() placement: string;
   @Input() delay: number;
   tooltip: HTMLElement;
