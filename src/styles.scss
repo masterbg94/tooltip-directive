@@ -24,16 +24,16 @@
   color: #f8f8f2;
   padding: 3px 8px;
   background: #282a36;
-  border-radius: 4px;
+  border-radius: 0 15px 15px 15px;
   z-index: 1000;
   opacity: 0;
 }
 
-.ng-tooltip:after {
+/*.ng-tooltip:after {
   content: "";
   position: absolute;
   border-style: solid;
-}
+}*/
 
 .ng-tooltip-top:after {
   top: 100%;
@@ -43,13 +43,13 @@
   border-color: black transparent transparent transparent;
 }
 
-.ng-tooltip-bottom:after {
+/*.ng-tooltip-bottom:after {
   bottom: 100%;
   left: 50%;
   margin-left: -5px;
   border-width: 5px;
   border-color: transparent transparent black transparent;
-}
+}*/
 
 .ng-tooltip-left:after {
   top: 50%;
