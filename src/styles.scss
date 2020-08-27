@@ -19,24 +19,32 @@
 .ng-tooltip {
   position: absolute;
   //max-width: 150px;
-  width: 50px;
+  //width: 50px;
   font-size: 14px;
   text-align: center;
   color: #f8f8f2;
   //padding: 3px 8px;
-  line-height: 20px;
+  line-height: 22px;
   background: #282a36;
   border-radius: 0 15px 15px 15px;
   z-index: 1000;
   opacity: 0;
-  transition: 1s;
-  height: 10px;
+  //transition: 0.5s;
+  //height: 10px;
   white-space: nowrap;
+  transform: scale(0.7);
+  transform-origin: top left;
+
   &.ng-tooltip-show{
-    background: red;
-    width: 200px;
+    //background: red;
+    //width: 200px;
     opacity: 1;
-    height: 24px;
+    //height: 24px;
+    transform: scale(1);
+    //padding: 0 12px;
+  }
+  &.ng-tooltip-bottom{
+    transform-origin: top left;
   }
 }
 
@@ -78,9 +86,9 @@
   border-color: transparent black transparent transparent;
 }*/
 
-.ng-tooltip-show {
-  opacity: 1;
-}
+//.ng-tooltip-show {
+//  opacity: 1;
+//}
 
 .main-container {
   display: flex;
