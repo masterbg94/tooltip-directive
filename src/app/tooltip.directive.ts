@@ -6,11 +6,10 @@ import {Directive, ElementRef, HostListener, Input, Renderer2} from '@angular/co
 export class TooltipDirective {
   @Input('appTaTooltip') tooltipTitle: string;
   @Input() placement: string;
-  @Input() delay: number;
-  @Input() duratio: number;
+  @Input() delay: number = 500;
+  @Input() duration: number = 300;
   tooltip: HTMLElement;
   offset = 10;
-  public tout;
 
 
   constructor(private el: ElementRef, private renderer: Renderer2) {
@@ -29,8 +28,7 @@ export class TooltipDirective {
   }
 
   public suma(): number {
-    // this.tout = (Number(this.delay) + Number(this.duratio));
-    return (Number(this.delay) + Number(this.duratio));
+    return (Number(this.delay) + Number(this.duration));
   }
 
   public show() {
@@ -38,7 +36,7 @@ export class TooltipDirective {
     this.setPosition();
     this.renderer.addClass(this.tooltip, 'ng-tooltip-show');
     console.log('this.delay', this.delay);
-    console.log('this.duratio', this.duratio);
+    console.log('this.duration', this.duration);
     console.log('this.suma', this.suma());
   }
 
@@ -65,14 +63,7 @@ export class TooltipDirective {
     this.renderer.addClass(this.tooltip, 'ng-tooltip');
     // this.renderer.addClass(this.tooltip, `ng-tooltip-${this.placement}`);
 
-    // delay
-    /*this.renderer.setStyle(this.tooltip, '-webkit-transition', `opacity ${this.delay}ms`);
-    this.renderer.setStyle(this.tooltip, '-moz-transition', `opacity ${this.delay}ms`);
-    this.renderer.setStyle(this.tooltip, '-o-transition', `opacity ${this.delay}ms`);
-    this.renderer.setStyle(this.tooltip, 'transition', `opacity ${this.delay}ms`);
-    this.renderer.setStyle(this.tooltip, 'transition-delay', '0.5s');
-    this.renderer.setStyle(this.tooltip, 'width', 'fit-content');*/
-    this.renderer.setStyle(this.tooltip, 'transition', `${this.duratio}ms`);
+    this.renderer.setStyle(this.tooltip, 'transition', `${this.duration}ms`);
     this.renderer.setStyle(this.tooltip, 'transition-delay', `${this.delay}ms`);
   }
 
