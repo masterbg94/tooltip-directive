@@ -28,9 +28,9 @@ export class TooltipDirective {
     }
   }
 
-  public suma (): number {
-    this.tout = (Number(this.delay) + Number(this.duratio));
-    return  this.tout;
+  public suma(): number {
+    // this.tout = (Number(this.delay) + Number(this.duratio));
+    return (Number(this.delay) + Number(this.duratio));
   }
 
   public show() {
@@ -39,7 +39,7 @@ export class TooltipDirective {
     this.renderer.addClass(this.tooltip, 'ng-tooltip-show');
     console.log('this.delay', this.delay);
     console.log('this.duratio', this.duratio);
-    console.log('this.tout', this.suma());
+    console.log('this.suma', this.suma());
   }
 
   public hide() {
