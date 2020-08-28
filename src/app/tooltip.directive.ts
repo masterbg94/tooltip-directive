@@ -7,8 +7,11 @@ export class TooltipDirective {
   @Input('appTaTooltip') tooltipTitle: string;
   @Input() placement: string;
   @Input() delay: number;
+  @Input() duratio: number;
   tooltip: HTMLElement;
   offset = 10;
+  public tout;
+
 
   constructor(private el: ElementRef, private renderer: Renderer2) {
   }
@@ -25,10 +28,18 @@ export class TooltipDirective {
     }
   }
 
+  public suma (): number {
+    this.tout = (Number(this.delay) + Number(this.duratio));
+    return  this.tout;
+  }
+
   public show() {
     this.create();
     this.setPosition();
     this.renderer.addClass(this.tooltip, 'ng-tooltip-show');
+    console.log('this.delay', this.delay);
+    console.log('this.duratio', this.duratio);
+    console.log('this.tout', this.suma());
   }
 
   public hide() {
@@ -37,7 +48,7 @@ export class TooltipDirective {
       this.renderer.removeChild(document.body, this.tooltip);
       // this.renderer.removeChild(this.el.nativeElement, this.tooltip);
       this.tooltip = null;
-    }, this.delay);
+    }, this.suma());
   }
 
   public create() {
@@ -62,6 +73,7 @@ export class TooltipDirective {
     this.renderer.setStyle(this.tooltip, 'transition-delay', '0.5s');
     this.renderer.setStyle(this.tooltip, 'width', 'fit-content');*/
     this.renderer.setStyle(this.tooltip, 'transition', `${this.delay}ms`);
+    this.renderer.setStyle(this.tooltip, 'transition-delay', `${this.delay}ms`);
   }
 
   public setPosition() {
