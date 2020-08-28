@@ -72,7 +72,7 @@ export class TooltipDirective {
     this.renderer.setStyle(this.tooltip, 'transition', `opacity ${this.delay}ms`);
     this.renderer.setStyle(this.tooltip, 'transition-delay', '0.5s');
     this.renderer.setStyle(this.tooltip, 'width', 'fit-content');*/
-    this.renderer.setStyle(this.tooltip, 'transition', `${this.delay}ms`);
+    this.renderer.setStyle(this.tooltip, 'transition', `${this.duratio}ms`);
     this.renderer.setStyle(this.tooltip, 'transition-delay', `${this.delay}ms`);
   }
 
