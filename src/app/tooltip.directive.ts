@@ -79,6 +79,8 @@ export class TooltipDirective {
     const scrollPos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
     console.log('scrollPos', scrollPos);
 
+    console.log('innerWidth', window.innerWidth);
+
     let top;
     let left;
     let right;
@@ -98,7 +100,8 @@ export class TooltipDirective {
       top = hostPos.bottom + this.offset;
       // 24 => padding ;  /7*10 => scale transform
       // left = hostPos.left + (hostPos.width / 2) - (tooltipPos.width / 7 * 10) - 24;
-      right = window.innerWidth - hostPos.left - (hostPos.width / 2);
+      // right = window.innerWidth - hostPos.left - (hostPos.width / 2);
+      right = document.body.offsetWidth - hostPos.left - (hostPos.width / 2);
     }
 
     if (this.placement === 'left') {
