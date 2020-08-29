@@ -10,6 +10,7 @@ export class TooltipDirective {
   @Input() duration: number = 300;
   tooltip: HTMLElement;
   offset = 10;
+  @Input() tooltipBackground = '#28529f';
 
 
   constructor(private el: ElementRef, private renderer: Renderer2) {
@@ -86,7 +87,7 @@ export class TooltipDirective {
       left = hostPos.left + (hostPos.width - tooltipPos.width) / 2;
     }
 
-    if (this.placement === 'bottom') {
+    if (this.placement === 'bottom-right') {
       top = hostPos.bottom + this.offset;
       // left = hostPos.left + (hostPos.width - tooltipPos.width) / 2;
       left = hostPos.left + hostPos.width / 2;
@@ -104,6 +105,8 @@ export class TooltipDirective {
 
     this.renderer.setStyle(this.tooltip, 'top', `${top + scrollPos}px`);
     this.renderer.setStyle(this.tooltip, 'left', `${left}px`);
+
+    this.renderer.setStyle(this.tooltip, 'background', `${this.tooltipBackground}`);
   }
 
 }
