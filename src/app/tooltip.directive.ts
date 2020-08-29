@@ -62,7 +62,7 @@ export class TooltipDirective {
     // this.renderer.appendChild(this.el.nativeElement, this.tooltip);
 
     this.renderer.addClass(this.tooltip, 'ng-tooltip');
-    // this.renderer.addClass(this.tooltip, `ng-tooltip-${this.placement}`);
+    this.renderer.addClass(this.tooltip, `ng-tooltip-${this.placement}`);
 
     this.renderer.setStyle(this.tooltip, 'transition', `${this.duration}ms`);
     this.renderer.setStyle(this.tooltip, 'transition-delay', `${this.delay}ms`);
@@ -81,6 +81,7 @@ export class TooltipDirective {
 
     let top;
     let left;
+    let right;
 
     if (this.placement === 'top') {
       top = hostPos.top - tooltipPos.height - this.offset;
@@ -93,6 +94,13 @@ export class TooltipDirective {
       left = hostPos.left + hostPos.width / 2;
     }
 
+    if (this.placement === 'bottom-left') {
+      top = hostPos.bottom + this.offset;
+      // 24 => padding ;  /7*10 => scale transform
+      // left = hostPos.left + (hostPos.width / 2) - (tooltipPos.width / 7 * 10) - 24;
+      right = window.innerWidth - hostPos.left - (hostPos.width / 2);
+    }
+
     if (this.placement === 'left') {
       top = hostPos.top + (hostPos.height - tooltipPos.height) / 2;
       left = hostPos.left - tooltipPos.width - this.offset;
@@ -103,8 +111,13 @@ export class TooltipDirective {
       left = hostPos.right + this.offset;
     }
 
-    this.renderer.setStyle(this.tooltip, 'top', `${top + scrollPos}px`);
-    this.renderer.setStyle(this.tooltip, 'left', `${left}px`);
+    if (this.placement === 'bottom-left') {
+      this.renderer.setStyle(this.tooltip, 'top', `${top + scrollPos}px`);
+      this.renderer.setStyle(this.tooltip, 'right', `${right}px`);
+    } else {
+      this.renderer.setStyle(this.tooltip, 'top', `${top + scrollPos}px`);
+      this.renderer.setStyle(this.tooltip, 'left', `${left}px`);
+    }
 
     this.renderer.setStyle(this.tooltip, 'background', `${this.tooltipBackground}`);
   }
