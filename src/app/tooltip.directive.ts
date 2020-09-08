@@ -20,6 +20,8 @@ export class TooltipDirective {
     if (!this.tooltip) {
       if (this.testPos()){
         this.placement = 'bottom-left';
+      } else {
+        this.placement = 'bottom-right';
       }
       this.show();
       console.log(this.placement);
@@ -29,8 +31,10 @@ export class TooltipDirective {
   public testPos() {
     let page = document.body.offsetWidth;
     let element = this.el.nativeElement.getBoundingClientRect().right;
-    if ( page - element < 50 ) {
+    if ((page - element) < 50) {
       return true;
+    } else {
+      return false;
     }
   }
 
