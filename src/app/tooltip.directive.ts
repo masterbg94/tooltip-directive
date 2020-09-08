@@ -18,7 +18,19 @@ export class TooltipDirective {
 
   @HostListener('mouseenter') onMouseEnter() {
     if (!this.tooltip) {
+      if (this.testPos()){
+        this.placement = 'bottom-left';
+      }
       this.show();
+      console.log(this.placement);
+    }
+  }
+
+  public testPos() {
+    let page = document.body.offsetWidth;
+    let element = this.el.nativeElement.getBoundingClientRect().right;
+    if ( page - element < 50 ) {
+      return true;
     }
   }
 
