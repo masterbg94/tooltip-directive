@@ -16,18 +16,6 @@ export class TooltipDirective {
   constructor(private el: ElementRef, private renderer: Renderer2) {
   }
 
-  @HostListener('mouseenter') onMouseEnter() {
-    if (!this.tooltip) {
-      if (this.testPos()){
-        this.placement = 'bottom-left';
-      } else {
-        this.placement = 'bottom-right';
-      }
-      this.show();
-      console.log(this.placement);
-    }
-  }
-
   public testPos() {
     let page = document.body.offsetWidth;
     let element = this.el.nativeElement.getBoundingClientRect().right;
@@ -35,6 +23,23 @@ export class TooltipDirective {
       return true;
     } else {
       return false;
+    }
+  }
+
+  @HostListener('mouseenter') onMouseEnter() {
+    if (!this.tooltip) {
+      if (this.testPos()){
+        this.placement = 'bottom-left';
+      }
+      /** Dont need else code below because
+       *  other tooltips positioned
+       *  as 'bottom-left' goes to 'bottom-right' 
+       */
+      /*else {
+        this.placement = 'bottom-right';
+      }*/
+      this.show();
+      console.log(this.placement);
     }
   }
 
